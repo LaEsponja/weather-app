@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';  // Use import instead of require
+import fetch from 'node-fetch'; 
 
 const API_KEY = process.env.API_KEY;
 
