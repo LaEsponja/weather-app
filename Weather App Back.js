@@ -4,7 +4,7 @@ const weatherDiv = document.getElementById('weather');
 
 // Function to fetch and display weather
 async function fetchWeather(lat, lon) {
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`; // Serverless function URL
+  const url = `/api/fetch-weather?lat=${lat}&lon=${lon}`; // Serverless function URL
 
   console.log(`API request URL: ${url}`);
 
@@ -13,6 +13,7 @@ async function fetchWeather(lat, lon) {
     weatherDiv.innerHTML = '<p>Loading weather data...</p>';
 
     const response = await fetch(url); // Call the serverless function
+    
     if (!response.ok) {
       throw new Error(`API call failed with status ${response.status}`);
     }

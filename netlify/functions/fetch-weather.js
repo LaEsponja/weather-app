@@ -2,7 +2,6 @@ const fetch = require('node-fetch');
 const API_KEY = process.env.API_KEY;
 
 exports.handler = async function (event) {
-  const API_KEY = process.env.API_KEY; // Securely retrieve the API key
   const { lat, lon } = event.queryStringParameters;
 
   if (!lat || !lon) {
