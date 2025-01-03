@@ -1,0 +1,21 @@
+name: Deploy Weather App
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # This checks out the code from your repository
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4  # GitHub Action to deploy to GitHub Pages
+        with:
+          branch: gh-pages  # The branch to deploy your files to
+          folder: .  # The folder containing your raw files (root directory in this case)
+
