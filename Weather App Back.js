@@ -4,7 +4,7 @@ const weatherDiv = document.getElementById('weather');
 
 // Function to fetch and display weather
 async function fetchWeather(lat, lon) {
-  const url = `https://fancy-treacle-49b538.netlify.app/api/fetch-weather?lat=${lat}&lon=${lon}`; // Serverless function URL
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`; // Serverless function URL
 
   console.log(`API request URL: ${url}`);
 
