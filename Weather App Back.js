@@ -3,7 +3,9 @@ const weatherButton = document.getElementById('getWeather');
 const weatherDiv = document.getElementById('weather');
 
 // OpenWeatherMap API Key
-const API_KEY = 'ec46e79a744cdfa07366560c47766a4d';
+require('dotenv').config();
+
+const API_KEY = process.env.API_KEY;
 
 // Function to fetch and display weather
 async function fetchWeather(lat, lon) {
