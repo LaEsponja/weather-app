@@ -1,35 +1,34 @@
-const axios = require('axios');
+const fetch = require('node-fetch');
 
-exports.handler = async (event) => {
+exports.handler = async function (event) {
+  const API_KEY = process.env.API_KEY; // Securely retrieve the API key
   const { lat, lon } = event.queryStringParameters;
-  const API_KEY = process.env.API_KEY;
 
   if (!lat || !lon) {
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: 'Latitude and longitude are required.' }),
+      body: JSON.stringify({ error: 'Latitude and Longitude are required' }),
     };
   }
 
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
+
   try {
-    const response = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
-      params: {
-        lat,
-        lon,
-        units: 'metric',
-        appid: API_KEY,
-      },
-    });
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Failed to fetch weather data');
+    }
 
     return {
       statusCode: 200,
-      body: JSON.stringify(response.data),
+      body: JSON.stringify(data),
     };
   } catch (error) {
-    console.error('Error fetching weather data:', error.message);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to fetch weather data.' }),
+      body: JSON.stringify({ error: error.message }),
     };
   }
 };
