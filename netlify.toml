@@ -1,5 +1,5 @@
 [build]
-   publish = "dist" # Directory to publish after build
+   publish = "/" # Directory to publish after build
   functions = "netlify/functions"  
 
 [[redirects]]
