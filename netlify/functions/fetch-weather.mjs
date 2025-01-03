@@ -1,7 +1,8 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';  // Use import instead of require
+
 const API_KEY = process.env.API_KEY;
 
-exports.handler = async function (event) {
+export async function handler(event) {
   const { lat, lon } = event.queryStringParameters;
 
   if (!lat || !lon) {
@@ -31,4 +32,4 @@ exports.handler = async function (event) {
       body: JSON.stringify({ error: error.message }),
     };
   }
-};
+}

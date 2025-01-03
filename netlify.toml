@@ -1,2 +1,13 @@
+[build]
+  # Directory to publish after build
+  publish = "dist"  # This is your build output directory
+  functions = "netlify/functions"  
+
+[[redirects]]
+  from = "/api/*"
+  to = "/netlify/functions/:splat"
+  status = 200
+
 [functions]
-directory = "netlify/functions"
+  directory = "netlify/functions"
+  node_bundler = "esbuild" 
