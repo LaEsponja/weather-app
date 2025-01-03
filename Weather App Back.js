@@ -6,6 +6,8 @@ const weatherDiv = document.getElementById('weather');
 async function fetchWeather(lat, lon) {
   const url = `/api/fetch-weather?lat=${lat}&lon=${lon}`; // Serverless function URL
 
+  console.log(`API request URL: ${url}`);
+
   try {
     // Show a loading message
     weatherDiv.innerHTML = '<p>Loading weather data...</p>';
